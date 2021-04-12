@@ -30,7 +30,13 @@ int main(void) {
 	tmpA4 = (PINA & 0x10) >> 3;
 	tmpA5 = (PINA & 0x20) >> 4;
 	tmpA6 = (PINA & 0x40) >> 5;
-	if(tmpA < 3){
+	if(tmpA == 0){
+		PORTC = 0x40;
+		if(!tmpA6 && tmpA5 && tmpA4){
+			PORTC = PORTC | 0x80;
+		}
+	}
+	else if(tmpA < 3){
 		PORTC = 0x60;
 		if(!tmpA6 && tmpA5 && tmpA4){
 			PORTC = PORTC | 0x80;
