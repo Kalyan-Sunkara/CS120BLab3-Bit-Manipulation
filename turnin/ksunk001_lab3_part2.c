@@ -23,8 +23,11 @@ int main(void) {
 //	unsigned char total = 0;
 	unsigned char tmpA = 0;
     while (1) {
-	tmpA = PINA;
-	if(tmpA < 3){
+	tmpA = PINA & 0x0F;
+	if(tmpA == 0){
+		PORTC = 0x40;
+	}
+	else if(tmpA < 3){
 		PORTC = 0x60;
 	}
 	else if(tmpA < 5){
